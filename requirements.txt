@@ -1,4 +1,5 @@
+numpy==1.22.0
 scikit-learn==1.0.2
-mlflow
+mlflow==2.11.3
 protobuf==3.20
 pyspark==3.3.0 # install avoids clash with /opt/cloudera/parcels/CDH/lib/spark/python/pyspark/ on CDSW
