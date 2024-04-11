@@ -45,7 +45,7 @@ from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import StandardScaler
 from sklearn.ensemble import RandomForestClassifier
 
-from make_data import X_train, X_test, y_train, y_test
+from scripts.make_data import X_train, X_test, y_train, y_test
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--max_depth", type=int, default=3)
