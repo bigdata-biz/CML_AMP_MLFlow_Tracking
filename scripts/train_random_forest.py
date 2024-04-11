@@ -45,19 +45,22 @@ from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import StandardScaler
 from sklearn.ensemble import RandomForestClassifier
 
-from scripts.data import X_train, X_test, y_train, y_test
+from make_data import X_train, X_test, y_train, y_test
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--max-depth", type=int, default=3)
-parser.add_argument("--n-estimators", type=int, default=20)
+parser.add_argument("--max_depth", type=int, default=3)
+parser.add_argument("--n_estimators", type=int, default=20)
+parser.add_argument("--experiment_name", type=str, default='ml_experiment')
 args, _ = parser.parse_known_args()
 
+mlflow.set_experiment(args.experiment_name)
 
 with mlflow.start_run():
 
     # Log hyperparameters for the training run
 
-    mlflow.log_params({"max_depth": args.max_depth, "n_estimators": args.n_estimators})
+    mlflow.log_params({"max_depth": args.max_depth
+                       , "n_estimators": args.n_estimators})
 
     # Define and train a ML pipeline
 

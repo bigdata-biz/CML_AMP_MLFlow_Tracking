@@ -45,21 +45,21 @@ from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import StandardScaler
 from sklearn.neighbors import KNeighborsClassifier
 
-from scripts.data import X_train, X_test, y_train, y_test
+from make_data import X_train, X_test, y_train, y_test
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--n-neighbors", type=int, default=5)
+parser.add_argument("--n_neighbors", type=int, default=5)
+parser.add_argument("--experiment_name", type=str, default='ml_experiment')
 args, _ = parser.parse_known_args()
 
+mlflow.set_experiment(args.experiment_name)
 
 with mlflow.start_run():
-
     # Log hyperparameters for the training run
 
     mlflow.log_param("n_neighbors", args.n_neighbors)
 
     # Define and train a ML pipeline
-
     scaler = StandardScaler()
     kn = KNeighborsClassifier(args.n_neighbors)
 
